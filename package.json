@@ -1,0 +1,17 @@
+{
+  "name": "gulp-base",
+  "version": "1.0.0",
+  "description": "A base config for Gulp 4",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2"
+  }
+}
