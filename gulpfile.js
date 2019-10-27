@@ -5,7 +5,6 @@ const cssnano = require('cssnano');
 const postcss = require('gulp-postcss');
 const rename = require('gulp-rename');
 const del = require('del');
-const plumber = require('gulp-plumber');
 const browserSync = require('browser-sync').create();
 
 function clean() {
@@ -13,13 +12,12 @@ function clean() {
 }
 
 function style() {
-    return gulp.src('./src/scss/**/*.scss')
-        .pipe(plumber())
+    return gulp.src('./src/scss/**/*.scss', { sourcemaps: true })
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./dist/css'))
         .pipe(rename({ basename: "styles", suffix: ".min" }))
         .pipe(postcss([autoprefixer(), cssnano()]))
-        .pipe(gulp.dest("./dist/css"))
+        .pipe(gulp.dest("./dist/css", { sourcemaps: '.' }))
         .pipe(browserSync.stream());
 }
 
